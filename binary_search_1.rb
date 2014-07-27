@@ -55,6 +55,6 @@ def chop(int=0,sorted_array=[])
     return false
   end
 end
-array = [*1..100]
-chop(3,array)
+array = [*1..100000]
+chop(66666,array)
 #chop(int, array_of_int)
