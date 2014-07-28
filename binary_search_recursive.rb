@@ -1,19 +1,19 @@
-def chop(int=0,sorted_array=[])
-  max = sorted_array.length - 1
-  min = 0
-  if int > sorted_array[high] #If the int is bigger that the highest value in the array
-    puts "Sorry, The number #{int} is not in the array!"
+def chop(int=0,sorted_array=[],high=(sorted_array.length-1),low=0)
+  if high < low
+    puts "Error: The number is not in the array"
     return false
-  elsif !int.is_a? Integer #If the int is not an Integer (Boolean, String, Float)
-    puts "Sorry, only Integers are allowed in this method"
-    return false
-  elsif int < sorted_array[high] #If the int is lower
-    while (high >= low) #Do as long as the higher index is in fact bigger that the lower index. Equal will cache the mathing value, if any.™
-      index = (max + min)/2
-      if sorted_array[index] > int
-      end
-
-    end
   end
-
+  index = (high+low)/2
+  if sorted_array[index] > int
+      return chop(int,sorted_array,index-1,low)
+  elsif sorted_array[index] < int
+    return chop(int,sorted_array,high,index+1)
+  else
+    puts "The number #{int} has been found. Index: #{index} with value #{sorted_array[index]}"
+    return index
+  end
 end
+
+#Calling example
+arr = [*1..100]
+chop(45,arr)
